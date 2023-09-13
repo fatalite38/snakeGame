@@ -95,7 +95,35 @@ body {
     font-family: Impact;
 }
 
-@media (max-width: 532px) {
+.joystick {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: relatives;
+    bottom: 0;
+    left: 0;
+    margin-top: 20px;
+}
+
+.joystick-button {
+    background-color: #18DD11; /* Verde luminoso */
+    color: white;
+    font-size: 24px;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+@media (max-width: 640px) {
+    #mobile-controls {
+        display: flex; /* Mostrar os controles apenas em dispositivos móveis */
+    }
+}
+
+@media (max-width: 640px) {
     .canvas {
         width: 300px;
         height: 300px;

@@ -128,6 +128,30 @@ function iniciarNovoJogo() {
     gameInterval = setInterval(iniciarJogo, 250);
 }
 
+    //Lógica para controlar o jogo com botões
+    const upButton = document.getElementById("up-button");
+    const downButton = document.getElementById("down-button");
+    const leftButton = document.getElementById("left-button");
+    const rightButton = document.getElementById("right-button");
 
-/* função que determina a parada do jogo quando completo */
+    // Adicione funções de controle da cobra aqui
+    upButton.addEventListener("click", () => {
+        if (direction !== 'down') {
+            direction="up"}
+     })
+    downButton.addEventListener("click", () => {
+        if (direction !== 'up'){
+            direction='down'}
+    })
+
+    leftButton.addEventListener("click", () => {
+    if (direction !='right'){
+            direction= 'left'}
+    })
+
+    rightButton.addEventListener("click", () => {
+        if (direction!='left'){
+            direction ='right'}
+    });
+
 iniciarNovoJogo();
