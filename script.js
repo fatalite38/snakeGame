@@ -134,22 +134,21 @@ function iniciarNovoJogo() {
     const leftButton = document.getElementById("left-button");
     const rightButton = document.getElementById("right-button");
 
-    // Adicione funções de controle da cobra aqui
-    upButton.addEventListener("click", () => {
+    upButton.addEventListener("click", "touchstart" () => {
         if (direction !== 'down') {
             direction="up"}
      })
-    downButton.addEventListener("click", () => {
+    downButton.addEventListener("click", "touchstart" () => {
         if (direction !== 'up'){
             direction='down'}
     })
 
-    leftButton.addEventListener("click", () => {
+    leftButton.addEventListener("click", "touchstart" () => {
     if (direction !='right'){
             direction= 'left'}
     })
 
-    rightButton.addEventListener("click", () => {
+    rightButton.addEventListener("click", "touchstart" () => {
         if (direction!='left'){
             direction ='right'}
     });
