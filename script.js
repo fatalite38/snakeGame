@@ -3,6 +3,7 @@ const context = canvas.getContext("2d");
 const box = 32;
 const snake = [{ x: 8 * box, y: 8 * box }];
 let isGameOver = false;
+let isGameStarted = false;
  /* variavel da direção da cobra */
 let direction = "right";
 let gameInterval;
@@ -48,11 +49,12 @@ function mostrarLetsGo() {
 }
 mostrarLetsGo();
 
-document.getElementById("start-button").addEventListener("click", iniciarNovoJogo);
-
 
 /* funções para fazer a cobra aparecer ao lado oposto quando atravessar a caixa */
 function iniciarJogo(){
+    if (!isGameStarted) {
+        return;
+    }
     if (isGameOver) {
         return;
     }
@@ -111,6 +113,10 @@ function mostrarGameOver() {
     document.getElementById("game-over").style.display = "flex";
 }
 
+document.getElementById("start-button").addEventListener("click", function () {
+    isGameStarted = true; // Iniciar o jogo quando o botão "Start" for clicado
+});
+
 document.getElementById("restart-button").addEventListener("click", iniciarNovoJogo);
 
 function iniciarNovoJogo() {
@@ -119,7 +125,7 @@ function iniciarNovoJogo() {
     snake.length = 1;
     snake[0] = { x: 8 * box, y: 8 * box };
     direction = "right";
-    gameInterval = setInterval(iniciarJogo, 200);
+    gameInterval = setInterval(iniciarJogo, 250);
 }
 
 

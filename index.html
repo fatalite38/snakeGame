@@ -4,21 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" href="style.css">
 
     <title>Snake Game</title>
 </head>
 <body>
-    <h1 class="text">Snake Game</h1>
+    <div id="lets-go" class="game-over">
+        <p>Play<span class="snake-spam">Snake Game</span></p>
+        <button id="start-button" class="button">Start</button>
+    </div>
     <canvas class="canvas" id="snake" width="500" height="500"></canvas>
     <div id="game-over" class="game-over">
         <p>Game Over</p>
         <button id="restart-button">Restart</button>
     </div>
-    <div id="lets-go" class="game-over">
-        <p>Vamos Jogar!</p>
-        <button id="start-button">Start</button>
+    <div class="footer">
+        <h1 class="text">Snake Game</h1>
+        <span class="name">By: Luiz F D Pedrozo</span>
     </div>
+
 
     <script defer src="script.js"></script>
 </body>
