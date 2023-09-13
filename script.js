@@ -2,9 +2,10 @@ const canvas = document.getElementById("snake");
 const context = canvas.getContext("2d");
 const box = 32;
 const snake = [{ x: 8 * box, y: 8 * box }];
-
+let isGameOver = false;
  /* variavel da direção da cobra */
 let direction = "right";
+let gameInterval;
 
  /* criando a comida da cobra em lugares aleatorios da caixa */
 const food = { x: Math.floor(Math.random() * 15 + 1) * box, y: Math.floor(Math.random() * 15 + 1) * box };
@@ -37,32 +38,30 @@ function atualizarDirecao (event){
 }
 document.addEventListener('keydown', atualizarDirecao);
 
+function mostrarLetsGo() {
+    document.getElementById("lets-go").style.display = "flex";
+    /*Adicione um evento de clique para iniciar o jogo quando o botão "Start" for clicado */
+    document.getElementById("start-button").addEventListener("click", function () {
+        document.getElementById("lets-go").style.display = "none";
+        iniciarNovoJogo();
+    });
+}
+mostrarLetsGo();
+
+document.getElementById("start-button").addEventListener("click", iniciarNovoJogo);
+
+
 /* funções para fazer a cobra aparecer ao lado oposto quando atravessar a caixa */
 function iniciarJogo(){
+    if (isGameOver) {
+        return;
+    }
+
     if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0;  
     if(snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
     if(snake[0].y > 15 * box && direction == "down") snake[0].y = 0;
     if(snake[0].y < 0 && direction == "up") snake[0].y = 16 * box;
 
-    
-    function verificarColisao(){
-        for(i = 1; i < snake.length; i++ ){
-            if(snake[0].x === snake[i].x && snake[0].y === snake[i].y){
-                clearInterval(game);
-                document.getElementById("game-over").style.display = "flex"; // Exibir a tela de "Game Over"
-            }
-        }
-    }
-
-    function reiniciarJogo() {
-        clearInterval(game); // Limpar o intervalo anterior
-        snake.length = 1; // Redefinir o tamanho da cobra
-        snake[0] = { x: 8 * box, y: 8 * box }; // Redefinir a posição inicial da cobra
-        direction = "right"; // Redefinir a direção
-        document.getElementById("game-over").style.display = "none"; // Ocultar a tela de "Game Over"
-        game = setInterval(iniciarJogo, 100); // Iniciar o jogo novamente
-    }
-    document.getElementById("restart-button").addEventListener("click", reiniciarJogo);
     
     verificarColisao()
     createBox();
@@ -96,5 +95,33 @@ function iniciarJogo(){
     snake.unshift(newHead);  /* criando uma nova cabeça com metodo UNSHIFT que acrescenta no primeiro elemento a frente */
 
 }
+
+function verificarColisao(){
+    for(i = 1; i < snake.length; i++ ){
+        if(snake[0].x === snake[i].x && snake[0].y === snake[i].y){
+            clearInterval(gameInterval);
+            mostrarGameOver();
+        }
+    }
+}
+
+
+function mostrarGameOver() {
+    isGameOver = true;
+    document.getElementById("game-over").style.display = "flex";
+}
+
+document.getElementById("restart-button").addEventListener("click", iniciarNovoJogo);
+
+function iniciarNovoJogo() {
+    isGameOver = false; // Defina o estado do jogo como não encerrado
+    document.getElementById("game-over").style.display = "none";
+    snake.length = 1;
+    snake[0] = { x: 8 * box, y: 8 * box };
+    direction = "right";
+    gameInterval = setInterval(iniciarJogo, 200);
+}
+
+
 /* função que determina a parada do jogo quando completo */
-let game = setInterval(iniciarJogo, 100);
+iniciarNovoJogo();
