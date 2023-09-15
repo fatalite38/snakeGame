@@ -1,17 +1,19 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* Evita problemas com tamanhos de elementos */
 }
 
 body {
     height: 80vh;
-    width: 95;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 30px;
-    background-color: #232323
+    background-color: #232323;
+    overflow: hidden;
 
 }
 
@@ -100,7 +102,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    bottom: 0;
+    bottom: 10px;
     left: 0;
     margin-top: 20px;
 }
@@ -116,14 +118,15 @@ body {
     touch-action: manipulation;
 }
 
-@media (max-width: 510px){
+@media (max-width: 768px) or (max-height: 770px) {
     .canvas {
-        width: 300px;
-        height: 300px;
+        width: 100%;
+    
     }
 
-    .joystick {
-        padding-top: 15rem;
+    .joystick-button {
+        font-size: 16px;
+        padding: 6px 15px;
     }
 
 }
@@ -138,12 +141,20 @@ body {
     }
 }
 
-@media (max-height: 770px ){
-    .joystick-button {
-        font-size: 16px;
-        padding: 6px 15px;
+@media (max-height: 633px) and (max-width: 555px){
+    .canvas {
+        width: 250px;
+        height: 250px;
     }
-    .joystick {
-        position: sticky;
+    .snake-spam {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-height: 633px) and (min-width: 556px){
+    .canvas {
+        width: 250px;
+        height: 250px;
     }
 }

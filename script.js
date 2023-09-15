@@ -1,3 +1,4 @@
+// Entrada de dados
 const canvas = document.getElementById("snake");
 const context = canvas.getContext("2d");
 const box = 32;
@@ -134,21 +135,21 @@ function iniciarNovoJogo() {
     const leftButton = document.getElementById("left-button");
     const rightButton = document.getElementById("right-button");
 
-    upButton.addEventListener("click", "touchstart" () => {
+    upButton.addEventListener("touchstart", () => {
         if (direction !== 'down') {
             direction="up"}
      })
-    downButton.addEventListener("click", "touchstart" () => {
+    downButton.addEventListener("touchstart", () => {
         if (direction !== 'up'){
             direction='down'}
     })
 
-    leftButton.addEventListener("click", "touchstart" () => {
-    if (direction !='right'){
+    leftButton.addEventListener("touchstart", () => {
+        if (direction !='right'){
             direction= 'left'}
     })
 
-    rightButton.addEventListener("click", "touchstart" () => {
+    rightButton.addEventListener("touchstart", () => {
         if (direction!='left'){
             direction ='right'}
     });
