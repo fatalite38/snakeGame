@@ -129,7 +129,7 @@ function iniciarNovoJogo() {
     gameInterval = setInterval(iniciarJogo, 250);
 }
 
-    //Lógica para controlar o jogo com botões
+    //Lógica para controlar o jogo com touthscreen
     const upButton = document.getElementById("up-button");
     const downButton = document.getElementById("down-button");
     const leftButton = document.getElementById("left-button");
@@ -150,6 +150,26 @@ function iniciarNovoJogo() {
     })
 
     rightButton.addEventListener("touchstart", () => {
+        if (direction!='left'){
+            direction ='right'}
+    });
+
+    //Lógica para controlar o jogo com botões
+    upButton.addEventListener("click", () => {
+        if (direction !== 'down') {
+            direction="up"}
+     })
+    downButton.addEventListener("click", () => {
+        if (direction !== 'up'){
+            direction='down'}
+    })
+
+    leftButton.addEventListener("click", () => {
+        if (direction !='right'){
+            direction= 'left'}
+    })
+
+    rightButton.addEventListener("click", () => {
         if (direction!='left'){
             direction ='right'}
     });
